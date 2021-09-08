@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import APIData from "./APIData";
+import './App.css'
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -8,7 +9,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/1`)
+      .get(`https://jsonplaceholder.typicode.com/posts/2`)
       .then((res) => {
         setPosts(res.data);
         console.log(res.data);
@@ -19,15 +20,15 @@ function App() {
     setSearch(e.target.value);
   };
 
-  const postsFilters = posts.filter((posts) =>
-    posts.title.toLowerCase().includes(search.toLowerCase())
-  );
+  // const postFilters = posts.filter((posts) =>
+  //   posts.title.toLowerCase().includes(search.toLowerCase())
+  // );
 
   return (
     <div className="frontData">
       <div className="data-container">
         <h1>Data from the API</h1>
-        <form>
+        <form className="data-search">
           <input
             type="text"
             placeholder="Search"
@@ -36,13 +37,50 @@ function App() {
           />
         </form>
       </div>
-      {postsFilters.map((posts) => {
-        return (
-          <div className="frontData-details">
-            <APIData ID={posts.id} BODY={posts.body} TITLE={posts.title} />
-          </div>
-        );
-      })}
+      <div className="frontData-details">
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+      </div>
+      <div className="frontData-details">
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+        <APIData className="apiData"
+          ID={posts.id}
+          BODY={posts.body}
+          TITLE={posts.title}
+        />
+      </div>
     </div>
   );
 }
